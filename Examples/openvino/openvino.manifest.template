@@ -89,8 +89,9 @@ sgx.trusted_files.libnssnis = file:$(ARCH_LIBDIR)/libnss_nis.so.2
 sgx.trusted_files.libnsl = file:$(ARCH_LIBDIR)/libnsl.so.1
 
 # OpenVINO C++ dependencies
-sgx.trusted_files.libcpp = file:/usr/$(ARCH_LIBDIR)/libstdc++.so.6
-sgx.trusted_files.libgcc = file:$(ARCH_LIBDIR)/libgcc_s.so.1
+sgx.trusted_files.libcpp = file:$(GRAPHENE_DIR)/Runtime/libstdc++.so.6
+sgx.trusted_files.libgcc = file:$(GRAPHENE_DIR)/Runtime/libgcc_s.so.1
+
 
 # OpenVINO TBB dependencies
 sgx.trusted_files.libtbbmalloc = file:/usr/$(ARCH_LIBDIR)/libtbbmalloc.so.2
@@ -114,9 +115,12 @@ sgx.trusted_files.libinferenceengine_transformations      = file:$(OPENVINO_DIR)
 sgx.trusted_files.libinferenceengine_lptransformations    = file:$(OPENVINO_DIR)/bin/intel64/$(OPENVINO_BUILD)/lib/libinference_engine_lp_transformations.so
 
 # OpenVINO OpenCV libraries
-sgx.trusted_files.libimgcodecs  = file:$(OPENVINO_DIR)/inference-engine/temp/opencv_4.3.0_ubuntu18/opencv/lib/libopencv_imgcodecs.so.4.3
-sgx.trusted_files.libimgproc    = file:$(OPENVINO_DIR)/inference-engine/temp/opencv_4.3.0_ubuntu18/opencv/lib/libopencv_imgproc.so.4.3
-sgx.trusted_files.libopencvcore = file:$(OPENVINO_DIR)/inference-engine/temp/opencv_4.3.0_ubuntu18/opencv/lib/libopencv_core.so.4.3
+# Ubuntu16.04 sgx.trusted_files.libimgcodecs  = file:$(OPENVINO_DIR)/inference-engine/temp/opencv_4.1.1_ubuntu16/lib/libopencv_imgcodecs.so.4.1
+# Ubuntu16.04 sgx.trusted_files.libimgproc    = file:$(OPENVINO_DIR)/inference-engine/temp/opencv_4.1.1_ubuntu16/lib/libopencv_imgproc.so.4.1
+# Ubuntu16.04 sgx.trusted_files.libopencvcore = file:$(OPENVINO_DIR)/inference-engine/temp/opencv_4.1.1_ubuntu16/lib/libopencv_core.so.4.1
+# Ubuntu18.04 sgx.trusted_files.libimgcodecs  = file:$(OPENVINO_DIR)/inference-engine/temp/opencv_4.1.1_ubuntu18/lib/libopencv_imgcodecs.so.4.1
+# Ubuntu18.04 sgx.trusted_files.libimgproc    = file:$(OPENVINO_DIR)/inference-engine/temp/opencv_4.1.1_ubuntu18/lib/libopencv_imgproc.so.4.1
+# Ubuntu18.04 sgx.trusted_files.libopencvcore = file:$(OPENVINO_DIR)/inference-engine/temp/opencv_4.1.1_ubuntu18/lib/libopencv_core.so.4.1
 
 # OpenVINO OMP libraries
 sgx.trusted_files.libiomp5     = file:$(OPENVINO_DIR)/inference-engine/temp/omp/lib/libiomp5.so

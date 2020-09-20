@@ -172,6 +172,17 @@ sgx.allowed_files.resolv   = file:/etc/resolv.conf
 
 # System's file system table
 sgx.allowed_files.fstab   = file:/etc/fstab
+sgx.trusted_files.libblas      = file:/usr/$(ARCH_LIBDIR)/libblas.so.3
+sgx.trusted_files.libzstd      = file:/usr/$(ARCH_LIBDIR)/libzstd.so.1
+sgx.trusted_files.liblpack     = file:/usr/$(ARCH_LIBDIR)/liblapack.so.3
+sgx.trusted_files.libudev      = file:/$(ARCH_LIBDIR)/libudev.so.1
+sgx.trusted_files.cputable     = file:/usr/share/dpkg/cputable
+sgx.trusted_files.tupletable   = file:/usr/share/dpkg/tupletable
+sgx.trusted_files.libfortran   = file:/usr/$(ARCH_LIBDIR)/libgfortran.so.4
+sgx.trusted_files.libquad      = file:/usr/$(ARCH_LIBDIR)/libquadmath.so.0
+sgx.trusted_files.libjpeg      = file:/usr/$(ARCH_LIBDIR)/libjpeg.so.8
+sgx.trusted_files.libtiff      = file:/usr/$(ARCH_LIBDIR)/libtiff.so.5
+sgx.trusted_files.libjbig      = file:/usr/$(ARCH_LIBDIR)/libjbig.so.0
 
 # Graphene optionally provides patched OpenMP runtime library that runs faster
 # inside SGX enclaves (execute `make -C LibOS gcc` to generate it). Uncomment

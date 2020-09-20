@@ -32,6 +32,17 @@ OPENVINO_BUILD = Release
 LIBTBB_DEBUG   = ""
 endif
 
+DISTRIB_ID ?= $(shell lsb_release --short --id)
+DISTRIB_RELEASE ?= $(shell lsb_release --short --release)
+
+ifeq ($(SGX), 1)
+ifneq ($(DISTRIB_ID),Ubuntu)
+$(error This example requires Ubuntu when building for SGX.)
+endif
+endif
+
+UBUNTU_VERSION = $(DISTRIB_ID)$(DISTRIB_RELEASE)
+
 .PHONY: all
 all: $(OPENVINO_DIR)/inference-engine/bin/intel64/$(OPENVINO_BUILD)/object_detection_sample_ssd $(MODEL_DIR)/$(MODEL_NAME).bin openvino.manifest pal_loader
 ifeq ($(SGX),1)
@@ -71,6 +82,7 @@ openvino.manifest: openvino.manifest.template
 	    -e 's|$$(OPENVINO_BUILD)|'"$(OPENVINO_BUILD)"'|g' \
 	    -e 's|$$(LIBTBB_DEBUG)|'$(LIBTBB_DEBUG)'|g' \
 	    -e 's|$$(ARCH_LIBDIR)|'"$(ARCH_LIBDIR)"'|g' \
+	    -e 's|# '"$(UBUNTU_VERSION)"' ||g' \
 	    $< > $@
 
 # Generating the SGX-specific manifest (openvino.manifest.sgx), the enclave signature,
